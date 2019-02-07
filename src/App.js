@@ -4,7 +4,7 @@ import './App.css';
 class Formatter extends Component {
   constructor() {
     super();
-    this.state = { text: 'Test', formattedQuery: '' }
+    this.state = { text: '', formattedQuery: '' }
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -14,40 +14,37 @@ class Formatter extends Component {
     let i = 0;
     let depth = 0;
     let result = '';
-    while (i < str.length){
-     
-      if(str.charAt(i) === '('){
-        result =result.concat(str.charAt(i))
+    while (i < str.length) {
+
+      if (str.charAt(i) === '(') {
+        result += str.charAt(i)
         depth++;
-        result = result.concat("\n")
-        for(var j  =0; j < depth; j++){
-          result = result.concat("\t")
-        }
-      }else if (str.charAt(i) === ')'){
+        result += '\n';
+        result += '\t'.repeat(depth)
+      } else if (str.charAt(i) === ')') {
         depth--;
-        result = result.concat("\n")
-        for(var j  =0; j < depth; j++){
-          result = result.concat("\t")
-        }
-        result =result.concat(str.charAt(i))
-        result = result.concat("\n")
-        for(var j  =0; j < depth; j++){
-          result = result.concat("\t")
-        }
-      }else{
-        result =result.concat(str.charAt(i))
+        result += '\n';
+        if (depth > 0) result += '\t'.repeat(depth)
+        result += str.charAt(i)
+        result += '\n';
+        if (depth > 0) result += '\t'.repeat(depth)
+      } else {
+        result += str.charAt(i)
       }
       i++;
     }
-    
-    this.setState({ text: query, formattedQuery: result});
+    this.setState({ text: query, formattedQuery: result });
   }
   render() {
     return (
-      <div>
-        <textarea value={this.state.text} onChange={this.handleChange} />
+      <div >
+        Query:
         <br />
-        <textarea value={this.state.formattedQuery} />
+        <textarea className="Formatter" value={this.state.text} onChange={this.handleChange} />
+        <br />
+        Formatted:
+        <br />
+        <textarea className="Formatter" value={this.state.formattedQuery} />
       </div>
     );
   }

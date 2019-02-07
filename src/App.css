@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+
+.Formatter{
+  width: 90%;
+  height:max-content;
+  min-height: 20em;
+}
