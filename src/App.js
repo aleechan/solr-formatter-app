@@ -10,7 +10,7 @@ class Formatter extends Component {
   }
   handleChange(event) {
     let query = event.target.value;
-    let str = query.replace(/[\n\r\t]/gm, '');
+    let str = query.replace(/\s+(?=((\\[\\"]|[^\\"])*"(\\[\\"]|[^\\"])*")*(\\[\\"]|[^\\"])*$)/gm, ' ');
     let i = 0;
     let depth = 0;
     let result = '';
