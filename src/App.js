@@ -7,33 +7,49 @@ class Formatter extends Component {
     this.state = { text: '', formattedQuery: '' }
 
     this.handleChange = this.handleChange.bind(this);
+    this.parseQuery = this.parseQuery.bind(this);
+    this.nextLine = this.nextLine.bind(this);
   }
   handleChange(event) {
     let query = event.target.value;
     let str = query.replace(/\s+(?=((\\[\\"]|[^\\"])*"(\\[\\"]|[^\\"])*")*(\\[\\"]|[^\\"])*$)/gm, ' ');
+    var result = this.parseQuery(str);
+    this.setState({ text: query, formattedQuery: result });
+  }
+  parseQuery(str){
     let i = 0;
     let depth = 0;
     let result = '';
+    let part = '';
     while (i < str.length) {
-
       if (str.charAt(i) === '(') {
+        console.log(part)
+        result += part.trim();
+        if(!part.match(/[+-]/gm)){
+          result += this.nextLine(depth);
+        }
+        part = '';
         result += str.charAt(i)
-        depth++;
-        result += '\n';
-        result += '\t'.repeat(depth)
+        depth++
+        result += this.nextLine(depth);
       } else if (str.charAt(i) === ')') {
+        result += part;
+        part = '';
         depth--;
-        result += '\n';
-        if (depth > 0) result += '\t'.repeat(depth)
+        result += this.nextLine(depth);
         result += str.charAt(i)
-        result += '\n';
-        if (depth > 0) result += '\t'.repeat(depth)
+        result += this.nextLine(depth);
       } else {
-        result += str.charAt(i)
+        part += str.charAt(i)
       }
       i++;
     }
-    this.setState({ text: query, formattedQuery: result });
+    return result;
+  }
+  nextLine(depth){
+    let str = '\n'
+    if (depth > 0) str += '\t'.repeat(depth)
+    return str;
   }
   render() {
     return (
