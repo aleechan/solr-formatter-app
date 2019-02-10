@@ -30,7 +30,7 @@ class Formatter extends Component {
       if (str.charAt(i) === '(') {
         part = part.trim();
         //if the last character was '(' ignoring whitespace
-        if (result.match(/\([\s]*$/gm) && part.length > 0 && depth > 0) {
+        if (result.match(/\([\s]*$/gm) && part.length > 0 && depth > 0 && !part.match(/:$/)) {
           result += this.nextLine(depth);
         }
         result += part.trim();
@@ -44,7 +44,7 @@ class Formatter extends Component {
 
       } else if (str.charAt(i) === ')') {
         //if the last character printed was ) start a new line indented 1 less than the current depth
-        if (result.charAt(result.length - 1) === ')') {
+        if (result.charAt(result.length - 1) === ')' && result.charAt(result.lastIndexOf('(')-1) !== ':') {
           result += this.nextLine(depth - 1);
         }
         result += part.trim();
