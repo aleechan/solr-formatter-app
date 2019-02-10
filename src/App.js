@@ -30,7 +30,7 @@ class Formatter extends Component {
       if (str.charAt(i) === '(') {
         part = part.trim();
         //if the last character was '(' ignoring whitespace
-        if (result.match(/\([\s]*$/gm) && part.length > 0) {
+        if (result.match(/\([\s]*$/gm) && part.length > 0 && depth > 0) {
           result += this.nextLine(depth);
         }
         result += part.trim();
