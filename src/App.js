@@ -29,7 +29,7 @@ class Formatter extends Component {
     while (i < str.length) {
       if (str.charAt(i) === '(') {
         part = part.trim();
-        //if the last character was '(' ignoring whitespace
+        //if the last character was '(' ignoring whitespace, the part being printed has content,  this not the first open bracket in a block and the last character printed was not a ":"
         if (result.match(/\([\s]*$/gm) && part.length > 0 && depth > 0 && !part.match(/:$/)) {
           result += this.nextLine(depth);
         }
@@ -44,6 +44,7 @@ class Formatter extends Component {
 
       } else if (str.charAt(i) === ')') {
         //if the last character printed was ) start a new line indented 1 less than the current depth
+        //Also skip this if the last set to brackets was defining the field value
         if (result.charAt(result.length - 1) === ')' && result.charAt(result.lastIndexOf('(')-1) !== ':') {
           result += this.nextLine(depth - 1);
         }
