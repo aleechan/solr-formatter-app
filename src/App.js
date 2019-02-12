@@ -45,7 +45,7 @@ class Formatter extends Component {
       } else if (str.charAt(i) === ')') {
         //if the last character printed was ) start a new line indented 1 less than the current depth
         //Also skip this if the last set to brackets was defining the field value
-        if (result.charAt(result.length - 1) === ')' && result.charAt(result.lastIndexOf('(')-1) !== ':') {
+        if ((result.charAt(result.length - 1) === ')' && result.charAt(result.lastIndexOf('(')-1) !== ':') || result.match(/\)\)$/g)) {
           result += this.nextLine(depth - 1);
         }
         result += part.trim();
