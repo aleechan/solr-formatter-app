@@ -30,18 +30,34 @@ const formatter = ({
                 result += str.charAt(i);
 
             } else if (str.charAt(i) === ')') {
-                //if the last character printed was ) start a new line indented 1 less than the current depth
-                //Also skip this if the last set to brackets was defining the field value
-                if ((result.charAt(result.length - 1) === ')' && result.charAt(result.lastIndexOf('(') - 1) !== ':') || result.match(/\)\)$/g)) {
-                    result += this.nextLine(depth - 1);
-                }
-                result += part.trim();
-                depth--;
-                result += str.charAt(i);
-                part = '';
-                //If this the end of one query block add a new line
-                if (depth === 0) {
-                    result += '\n';
+                if (result.endsWith(":(") && part.length > 30) {
+                    var parts = this.splitValue(part, 30);
+                    console.log(parts);
+                    var indent = result.match(/[^\s]*$/g)[0].length;
+                    result += parts[0].trim();
+                    for (var j = 1; j < parts.length; j++) {
+                        result += this.nextLine(depth-2);
+                        result += ' '.repeat(indent);
+                        result += parts[j].trim();
+                    }
+                    result += this.nextLine(depth-1);
+                    result +=  str.charAt(i);
+                    depth--;
+                    part = '';
+                } else {
+                    //if the last character printed was ) start a new line indented 1 less than the current depth
+                    //Also skip this if the last set to brackets was defining the field value
+                    if ((result.charAt(result.length - 1) === ')' && result.charAt(result.lastIndexOf('(') - 1) !== ':') || result.match(/\)\)$/g) || result.lastIndexOf('\n') > result.lastIndexOf('(')) {
+                        result += this.nextLine(depth - 1);
+                    }
+                    result += part.trim();
+                    depth--;
+                    result += str.charAt(i);
+                    part = '';
+                    //If this the end of one query block add a new line
+                    if (depth === 0) {
+                        result += '\n';
+                    }
                 }
             } else {
                 part += str.charAt(i);
@@ -54,6 +70,33 @@ const formatter = ({
         var str = '\n';
         if (depth > 0) str += '\t'.repeat(depth);
         return str;
+    },
+    splitValue(str, length) {
+        var parts = [];
+        var i = 0;
+        var part = "";
+        var canSplit = true;
+        var inQuotes = false;
+        while (i < str.length) {
+            if (part.length > length && canSplit && !inQuotes) {
+                parts.push(part);
+                part = '';
+            }
+            var char = str.charAt(i);
+            part += char;
+            i++;
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            }
+            if (['+', '-', ' '].indexOf(char) > -1 && !inQuotes) {
+                canSplit = false;
+            } else {
+                canSplit = true;
+            }
+        }
+
+        parts.push(part);
+        return parts;
     }
 })
 
