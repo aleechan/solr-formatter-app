@@ -64,6 +64,7 @@ const formatter = ({
             }
             i++;
         }
+        result += part;
         return result;
     },
     nextLine(depth) {
@@ -88,7 +89,7 @@ const formatter = ({
             if (char === '"') {
                 inQuotes = !inQuotes;
             }
-            if (['+', '-', ' '].indexOf(char) > -1 && !inQuotes) {
+            if ("+- ".indexOf(char) > -1 ) {
                 canSplit = false;
             } else {
                 canSplit = true;
@@ -98,6 +99,6 @@ const formatter = ({
         parts.push(part);
         return parts;
     }
-})
+});
 
 export default formatter;
