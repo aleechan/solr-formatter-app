@@ -8,7 +8,7 @@ const formatter = ({
         str = str.replace(/(?<=\))\s*(?=\))/gm, '');
         return str;
     },
-    parseQuery(str,indentStr) {
+    parseQuery(str,indentStr,maxLength) {
         var i = 0;
         var depth = 0;
         var result = '';
@@ -30,9 +30,8 @@ const formatter = ({
                 result += str.charAt(i);
 
             } else if (str.charAt(i) === ')') {
-                if (result.endsWith(":(") && part.length > 30) {
-                    var parts = this.splitValue(part, 30);
-                    console.log(parts);
+                if (result.endsWith(":(") && part.length > maxLength) {
+                    var parts = this.splitValue(part, maxLength);
                     var indent = result.match(/[^\s]*$/g)[0].length;
                     result += parts[0].trim();
                     for (var j = 1; j < parts.length; j++) {
