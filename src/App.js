@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import formatter from './formatter.js';
-import { Grid, TextArea, Header, Form, Radio } from 'semantic-ui-react';
+import { Grid, TextArea, Header, Form, Radio, Button, Divider, Segment } from 'semantic-ui-react';
 
 class Formatter extends Component {
   constructor() {
@@ -32,45 +32,45 @@ class Formatter extends Component {
   }
   render() {
     return (
-      <Grid columns={2} divided style={{ height: '95vh' }}>
+      <Grid columns={3} style={{ height: '95vh' }}>
         <Grid.Row style={{ height: "90%" }}>
-          <Grid.Column textAlign='center'>
+          <Grid.Column textAlign='center' width={7}>
             <Header size='medium'>Query:</Header>
-            <TextArea style={{ width: "95%", minHeight: "85%", resize: "none" }}
+            <TextArea style={{ width: "95%", minHeight: "100%", resize: "none" }}
               value={this.state.text}
               onChange={this.handleQueryChange}
             />
-            <Form onSubmit={this.updateSettings}>
-              <Form.Field>
-                <Header size='medium'>Indent Style:</Header>
-              </Form.Field>
-              <Form.Field>
-                <Radio
-                  label='Tabs'
-                  name='indentStyle'
-                  value='tabs'
-                  checked={this.state.indent === 'tabs'}
-                  onChange={this.updateSettings}
-                />
-              </Form.Field>
-              <Form.Field>
-                <Radio
-                  label='Spaces'
-                  name='indentStyle'
-                  value='spaces'
-                  checked={this.state.indent === 'spaces'}
-                  onChange={this.updateSettings}
-                />
-              </Form.Field>
-            </Form>
+
           </Grid.Column>
-          <Grid.Column textAlign='center'>
+          <Grid.Column stretched textAlign='center' verticalAlign='middle' width={2} height={100}>
+            <Grid.Row>
+              <Segment>
+         
+                <Form onSubmit={this.updateSettings}>
+                  <Form.Field>
+                    <Header size='medium'>Indent Style:</Header>
+                  </Form.Field>
+                  <Form.Field>
+                    <Radio label='Tabs' name='indentStyle' value='tabs' checked={this.state.indent === 'tabs'} onChange={this.updateSettings} />
+                  </Form.Field>
+                  <Form.Field>
+                    <Radio label='Spaces' name='indentStyle' value='spaces' checked={this.state.indent === 'spaces'} onChange={this.updateSettings} />
+                  </Form.Field>
+                </Form>
+                <Divider />
+                <Button content='Copy' icon='left arrow' onClick={() => { this.updateQuery(this.state.formattedQuery) }} />
+              </Segment>
+
+            </Grid.Row>
+
+          </Grid.Column>
+          <Grid.Column textAlign='center' width={7}>
             <Header size='medium'>Formatted:</Header>
             <TextArea style={{ width: "95%", minHeight: "85%", resize: "none" }}
               value={this.state.formattedQuery}
             />
             <Header size='medium'>Compact:</Header>
-            <TextArea style={{ width: "95%", minHeight: "5%", resize: "none" }}
+            <TextArea style={{ width: "95%", minHeight: "10%", resize: "none" }}
               value={this.state.minQuery}
             />
           </Grid.Column>
