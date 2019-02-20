@@ -3,9 +3,9 @@ const formatter = ({
         //compress spaces not in quotes
         var str = value.replace(/\s+(?=((\\[\\"]|[^\\"])*"(\\[\\"]|[^\\"])*")*(\\[\\"]|[^\\"])*$)/gm, ' ');
         //remove extra spaces between (
-        str = str.replace(/(?<=\()\s*(?=\()/gm, '');
+        str = str.replace(/\(\s+\(/gm, '((');
         //remove extra spaces between )
-        str = str.replace(/(?<=\))\s*(?=\))/gm, '');
+        str = str.replace(/\)\s+\)/gm, '))');
         return str;
     },
     parseQuery(str, indentStr, maxLength) {
