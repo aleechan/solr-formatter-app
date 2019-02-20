@@ -34,12 +34,14 @@ const formatter = ({
                     var parts = this.splitValue(part, maxLength);
                     var indent = result.match(/[^\s]*$/g)[0].length;
                     result += parts[0].trim();
-                    for (var j = 1; j < parts.length; j++) {
-                        result += this.nextLine(depth - 2, indentStr);
-                        result += ' '.repeat(indent);
-                        result += parts[j].trim();
+                    if (parts.length > 1) {
+                        for (var j = 1; j < parts.length; j++) {
+                            result += this.nextLine(depth - 2, indentStr);
+                            result += ' '.repeat(indent);
+                            result += parts[j].trim();
+                        }
+                        result += this.nextLine(depth - 1, indentStr);
                     }
-                    result += this.nextLine(depth - 1, indentStr);
                     result += str.charAt(i);
                     depth--;
                     part = '';
