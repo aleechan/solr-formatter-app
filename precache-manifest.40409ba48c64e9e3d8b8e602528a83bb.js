@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/solr-formatter/static/media/icons.faff9214.woff"
   },
   {
-    "revision": "5caa3c0c55ede7d7d5bf",
+    "revision": "ea6a8d72006fcb874690",
     "url": "/solr-formatter/static/css/main.82df2767.chunk.css"
   },
   {
@@ -28,24 +28,24 @@ self.__precacheManifest = [
     "url": "/solr-formatter/static/media/outline-icons.ef60a4f6.woff"
   },
   {
-    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
-    "url": "/solr-formatter/static/media/outline-icons.ad97afd3.ttf"
+    "revision": "9c74e172f87984c48ddf5c8108cabe67",
+    "url": "/solr-formatter/static/media/flags.9c74e172.png"
   },
   {
     "revision": "701ae6abd4719e9c2ada3535a497b341",
     "url": "/solr-formatter/static/media/outline-icons.701ae6ab.eot"
   },
   {
-    "revision": "9c74e172f87984c48ddf5c8108cabe67",
-    "url": "/solr-formatter/static/media/flags.9c74e172.png"
+    "revision": "ad97afd3337e8cda302d10ff5a4026b8",
+    "url": "/solr-formatter/static/media/outline-icons.ad97afd3.ttf"
   },
   {
     "revision": "0ab54153eeeca0ce03978cc463b257f7",
     "url": "/solr-formatter/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "5caa3c0c55ede7d7d5bf",
-    "url": "/solr-formatter/static/js/main.5caa3c0c.chunk.js"
+    "revision": "ea6a8d72006fcb874690",
+    "url": "/solr-formatter/static/js/main.ea6a8d72.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -64,12 +64,12 @@ self.__precacheManifest = [
     "url": "/solr-formatter/static/media/icons.b87b9ba5.ttf"
   },
   {
-    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
-    "url": "/solr-formatter/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/solr-formatter/static/media/brand-icons.13db00b7.eot"
+  },
+  {
+    "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
+    "url": "/solr-formatter/static/media/brand-icons.c5ebe0b3.ttf"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -84,7 +84,7 @@ self.__precacheManifest = [
     "url": "/solr-formatter/static/css/1.75341c6c.chunk.css"
   },
   {
-    "revision": "709a7bcc1a99d683014fa06e32641af2",
+    "revision": "002b15b65ce195fca7909f17cd6d549f",
     "url": "/solr-formatter/index.html"
   }
 ];

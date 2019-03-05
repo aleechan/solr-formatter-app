@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/solr-formatter/precache-manifest.4d31551f0de20cc9c9d317dcfa28958b.js"
+  "/solr-formatter/precache-manifest.40409ba48c64e9e3d8b8e602528a83bb.js"
 );
 
 workbox.clientsClaim();
