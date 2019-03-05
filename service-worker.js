@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/solr-formatter-app/precache-manifest.8eb8fa82aa766ddc71b8a8393d016e50.js"
+  "/solr-formatter/precache-manifest.ea59ecc30138cde26280071ce040ac53.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/solr-formatter-app/index.html", {
+workbox.routing.registerNavigationRoute("/solr-formatter/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
