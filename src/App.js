@@ -64,7 +64,7 @@ class Formatter extends Component {
                 </Form>
                 <Divider />
                 <Form>
-                  <Header content='Max Field Length:' size='medium'/>
+                  <Header content='Wrap Fields Longer Than:' size='medium'/>
                   <Form.Input type='number' value={this.state.maxLength} onChange={this.updateMaxFieldLength}/>
                 </Form>
                 <Divider />
