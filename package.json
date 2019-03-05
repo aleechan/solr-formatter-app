@@ -2,7 +2,7 @@
   "name": "solr-formatter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://aleechan.github.io/solr-formatter",
+  "homepage": "https://aleechan.github.io/solr-formatter",
   "dependencies": {
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
