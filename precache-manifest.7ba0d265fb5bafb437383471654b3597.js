@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95e91de6d846fd2237b7a2900dff7bb1",
+    "revision": "092fac4d200be284cfcf552a9f6cd3f9",
     "url": "/solr-formatter/index.html"
   },
   {
-    "revision": "2d0cff2de3ab6c504b1b",
-    "url": "/solr-formatter/static/css/2.46ca93ba.chunk.css"
+    "revision": "2b53ff6a8d7105817c6d",
+    "url": "/solr-formatter/static/css/2.9796ddff.chunk.css"
   },
   {
-    "revision": "33da9e6422897de78b99",
+    "revision": "f1ea511a7b32d5e473d6",
     "url": "/solr-formatter/static/css/main.795991f2.chunk.css"
   },
   {
-    "revision": "2d0cff2de3ab6c504b1b",
-    "url": "/solr-formatter/static/js/2.aa642710.chunk.js"
+    "revision": "2b53ff6a8d7105817c6d",
+    "url": "/solr-formatter/static/js/2.2e671ae7.chunk.js"
   },
   {
-    "revision": "33da9e6422897de78b99",
-    "url": "/solr-formatter/static/js/main.da1e967c.chunk.js"
+    "revision": "f1ea511a7b32d5e473d6",
+    "url": "/solr-formatter/static/js/main.5c0fda92.chunk.js"
   },
   {
-    "revision": "cfb821a8e8bb34c1bbad",
-    "url": "/solr-formatter/static/js/runtime~main.752fb7c8.js"
+    "revision": "608e7554ca7cb4f8405d",
+    "url": "/solr-formatter/static/js/runtime-main.da439323.js"
   },
   {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
