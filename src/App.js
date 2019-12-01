@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import formatter from './formatter.js';
-import { Grid, TextArea, Header, Form, Radio, Button, Divider, Segment, Menu } from 'semantic-ui-react';
-
+import { Grid, TextArea, Header, Form, Radio, Button, Divider, Menu, Icon} from 'semantic-ui-react';
 class Formatter extends Component {
   constructor() {
     super();
@@ -21,7 +20,12 @@ class Formatter extends Component {
       indent = '    ';
     }
     var result = formatter.parseQuery(str, indent,this.state.maxLength);
-    this.setState({ text: query, formattedQuery: result, minQuery: str });
+    this.setState({ text: query, formattedQuery: result});
+  }
+
+  compactQuery(query){
+    var str = formatter.compactWhiteSpace(formatter.compactWhiteSpace(query));
+    this.setState({ text: str, formattedQuery: str});
   }
 
   updateIndent(event, { value }) {
@@ -30,6 +34,7 @@ class Formatter extends Component {
     this.setState(state);
     this.updateQuery(state.text);
   }
+
   updateMaxFieldLength(event,{value}){
     if(value < 1){
       value = 1;
@@ -42,46 +47,34 @@ class Formatter extends Component {
 
   render() {
     return (
-      <Grid columns={3} style={{ height: '95vh' }}>
-        <Grid.Row style={{ height: "90%" }}>
-          <Grid.Column textAlign='center' width={7}>
-            <Header size='medium' content='Query:' />
-            <TextArea style={{ width: "95%", minHeight: "100%", resize: "none" }} value={this.state.text} onChange={this.handleQueryChange} />
+      <Grid columns={2} style={{ height: '95vh' }}>
+        <Grid.Row style={{ height: "100%" }}>
+          <Grid.Column textAlign='center' width={13}>
+              <TextArea style={{ width: "95%", minHeight: "100%", resize: "none", 'fontFamily':"Lucida Console"}} value={this.state.text} onChange={this.handleQueryChange} />
           </Grid.Column>
-          <Grid.Column stretched textAlign='center' verticalAlign='middle' width={2} height={100}>
+          <Grid.Column stretched textAlign='left' verticalAlign='middle' width={2}>
             <Grid.Row>
-              <Segment>
-                <Form onSubmit={this.updateIndent}>
-                  <Form.Field>
-                    <Header size='medium' content='Indent Style:' />
-                  </Form.Field>
-                  <Form.Field>
-                    <Radio label='Tabs' name='indentStyle' value='tabs' checked={this.state.indent === 'tabs'} onChange={this.updateIndent} />
-                  </Form.Field>
-                  <Form.Field>
-                    <Radio label='Spaces' name='indentStyle' value='spaces' checked={this.state.indent === 'spaces'} onChange={this.updateIndent} />
-                  </Form.Field>
-                </Form>
-                <Divider />
-                <Form>
-                  <Header content='Wrap Fields Longer Than:' size='medium'/>
-                  <Form.Input type='number' value={this.state.maxLength} onChange={this.updateMaxFieldLength}/>
-                </Form>
-                <Divider />
-                <Button content='Copy' icon='left arrow' onClick={() => { this.updateQuery(this.state.formattedQuery) }} />
-
-              </Segment>
+              <Form onSubmit={this.updateIndent}>
+                <Form.Field>
+                  <Header size='medium' content='Indent Style:' />
+                </Form.Field>
+                <Form.Field>
+                  <Radio label='Tabs' name='indentStyle' value='tabs' checked={this.state.indent === 'tabs'} onChange={this.updateIndent} />
+                </Form.Field>
+                <Form.Field>
+                  <Radio label='Spaces' name='indentStyle' value='spaces' checked={this.state.indent === 'spaces'} onChange={this.updateIndent} />
+                </Form.Field>
+              </Form>
+              <Divider />
+              <Form>
+                <Header content='Wrap Fields Longer Than:' size='medium'/>
+                <Form.Input type='number' value={this.state.maxLength} onChange={this.updateMaxFieldLength}/>
+              </Form>
+              <Divider />
+              <Button content='Format' onClick={() => { this.updateQuery(this.state.formattedQuery) }}/>
+              <Divider/>
+              <Button content='Compact' onClick={() => { this.compactQuery(this.state.formattedQuery) }}/>
             </Grid.Row>
-          </Grid.Column>
-          <Grid.Column textAlign='center' width={7}>
-            <Header size='medium'>Formatted:</Header>
-            <TextArea style={{ width: "95%", minHeight: "85%", resize: "none" }}
-              value={this.state.formattedQuery}
-            />
-            <Header size='medium' content='Compact:' />
-            <TextArea style={{ width: "95%", minHeight: "10%", resize: "none" }}
-              value={this.state.minQuery}
-            />
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -96,8 +89,12 @@ class App extends Component {
           <Menu.Item header>
             <Header size='huge' content='Solr Query Formatter' />
           </Menu.Item>
+          <Menu.Item position='right'>
+              <a href="https://github.com/aleechan/solr-formatter" style={{color:"black"}}>
+                <Icon name='github' size='large'/>
+              </a>
+          </Menu.Item>
         </Menu>
-
         <Formatter />
       </div>);
   }
