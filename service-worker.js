@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/solr-formatter/precache-manifest.7ba0d265fb5bafb437383471654b3597.js"
+  "/solr-formatter/precache-manifest.d9408b8521b959d0a9dadb3b172c4d80.js"
 );
 
 self.addEventListener('message', (event) => {

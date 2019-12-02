@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/solr-formatter/static/css/main.795991f2.chunk.css",
-    "main.js": "/solr-formatter/static/js/main.5c0fda92.chunk.js",
-    "main.js.map": "/solr-formatter/static/js/main.5c0fda92.chunk.js.map",
+    "main.js": "/solr-formatter/static/js/main.a549cc5f.chunk.js",
+    "main.js.map": "/solr-formatter/static/js/main.a549cc5f.chunk.js.map",
     "runtime-main.js": "/solr-formatter/static/js/runtime-main.da439323.js",
     "runtime-main.js.map": "/solr-formatter/static/js/runtime-main.da439323.js.map",
-    "static/css/2.9796ddff.chunk.css": "/solr-formatter/static/css/2.9796ddff.chunk.css",
-    "static/js/2.2e671ae7.chunk.js": "/solr-formatter/static/js/2.2e671ae7.chunk.js",
-    "static/js/2.2e671ae7.chunk.js.map": "/solr-formatter/static/js/2.2e671ae7.chunk.js.map",
+    "static/css/2.ba1e88bb.chunk.css": "/solr-formatter/static/css/2.ba1e88bb.chunk.css",
+    "static/js/2.371803bf.chunk.js": "/solr-formatter/static/js/2.371803bf.chunk.js",
+    "static/js/2.371803bf.chunk.js.map": "/solr-formatter/static/js/2.371803bf.chunk.js.map",
     "index.html": "/solr-formatter/index.html",
-    "precache-manifest.7ba0d265fb5bafb437383471654b3597.js": "/solr-formatter/precache-manifest.7ba0d265fb5bafb437383471654b3597.js",
+    "precache-manifest.d9408b8521b959d0a9dadb3b172c4d80.js": "/solr-formatter/precache-manifest.d9408b8521b959d0a9dadb3b172c4d80.js",
     "service-worker.js": "/solr-formatter/service-worker.js",
-    "static/css/2.9796ddff.chunk.css.map": "/solr-formatter/static/css/2.9796ddff.chunk.css.map",
+    "static/css/2.ba1e88bb.chunk.css.map": "/solr-formatter/static/css/2.ba1e88bb.chunk.css.map",
     "static/css/main.795991f2.chunk.css.map": "/solr-formatter/static/css/main.795991f2.chunk.css.map",
     "static/media/semantic.min.css": "/solr-formatter/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.da439323.js",
-    "static/css/2.9796ddff.chunk.css",
-    "static/js/2.2e671ae7.chunk.js",
+    "static/css/2.ba1e88bb.chunk.css",
+    "static/js/2.371803bf.chunk.js",
     "static/css/main.795991f2.chunk.css",
-    "static/js/main.5c0fda92.chunk.js"
+    "static/js/main.a549cc5f.chunk.js"
   ]
 }
