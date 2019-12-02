@@ -4,35 +4,35 @@ import { Grid, TextArea, Header, Form, Radio, Button, Divider, Menu, Icon} from 
 class Formatter extends Component {
   constructor() {
     super();
-    this.state = { text: '', formattedQuery: '', minQuery: '', indent: 'tabs',maxLength:30};
+    this.state = { text: '', indent: 'tabs',maxLength:30};
     this.handleQueryChange = this.handleQueryChange.bind(this);
-    this.updateQuery = this.updateQuery.bind(this);
+    this.formatQuery = this.formatQuery.bind(this);
     this.updateIndent = this.updateIndent.bind(this);
     this.updateMaxFieldLength = this.updateMaxFieldLength.bind(this);
   }
   handleQueryChange(event) {
-    this.updateQuery(event.target.value);
+    this.setState({ text: event.target.value});
   }
-  updateQuery(query) {
+  formatQuery(query) {
     var str = formatter.compactWhiteSpace(query);
     var indent = '\t';
     if (this.state.indent === 'spaces') {
       indent = '    ';
     }
     var result = formatter.parseQuery(str, indent,this.state.maxLength);
-    this.setState({ text: query, formattedQuery: result});
+    this.setState({ text: result});
   }
 
   compactQuery(query){
     var str = formatter.compactWhiteSpace(formatter.compactWhiteSpace(query));
-    this.setState({ text: str, formattedQuery: str});
+    this.setState({ text: str});
   }
 
   updateIndent(event, { value }) {
     const state = this.state;
     state.indent = value;
     this.setState(state);
-    this.updateQuery(state.text);
+    this.formatQuery(state.text);
   }
 
   updateMaxFieldLength(event,{value}){
@@ -42,7 +42,7 @@ class Formatter extends Component {
     const state = this.state;
     state.maxLength = value;
     this.setState(state);
-    this.updateQuery(state.text);
+    this.formatQuery(state.text);
   }
 
   render() {
@@ -71,9 +71,9 @@ class Formatter extends Component {
                 <Form.Input type='number' value={this.state.maxLength} onChange={this.updateMaxFieldLength}/>
               </Form>
               <Divider />
-              <Button content='Format' onClick={() => { this.updateQuery(this.state.formattedQuery) }}/>
+              <Button content='Format' onClick={() => { this.formatQuery(this.state.text) }}/>
               <Divider/>
-              <Button content='Compact' onClick={() => { this.compactQuery(this.state.formattedQuery) }}/>
+              <Button content='Compact' onClick={() => { this.compactQuery(this.state.text) }}/>
             </Grid.Row>
           </Grid.Column>
         </Grid.Row>
